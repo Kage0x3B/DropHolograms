@@ -1,1 +1,5 @@
+#Format for the hologram text.
+#You can use %name% and %amount% as placeholders for the item name and amount
+#With '&' and a following character, you can add colors to the text
+#All available colors and formatting codes are listed on https://wiki.ess3.net/mc/
 itemInfoFormat: '&6%amount% %name%'
