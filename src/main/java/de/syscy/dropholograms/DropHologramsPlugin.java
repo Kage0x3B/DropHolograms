@@ -3,10 +3,13 @@ package de.syscy.dropholograms;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
@@ -68,8 +71,10 @@ public class DropHologramsPlugin extends JavaPlugin implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR)
-	public void onItemDrop(PlayerDropItemEvent event) {
-		updateDisplayName(event.getItemDrop());
+	public void onItemDrop(EntitySpawnEvent event) {
+		if(event.getEntityType() == EntityType.DROPPED_ITEM) {
+			updateDisplayName((Item) event.getEntity());
+		}
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR)
